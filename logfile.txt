@@ -1,0 +1,39 @@
+********************************************************************
+Stack[0x60c000000040] called void StackDump(Stack*)(36) from verify.cpp
+{
+   size = 0;
+   capacity = 30;
+   data[0x60c000000040]
+       {
+       *data[0] = 0
+       *data[1] = 0
+       *data[2] = 0
+       *data[3] = 0
+       *data[4] = 0
+       *data[5] = 0
+       *data[6] = 0
+       *data[7] = 0
+       *data[8] = 0
+       *data[9] = 0
+       *data[10] = 0
+       *data[11] = 0
+       *data[12] = 0
+       *data[13] = 0
+       *data[14] = 0
+       *data[15] = 0
+       *data[16] = 0
+       *data[17] = 0
+       *data[18] = 0
+       *data[19] = 0
+       *data[20] = 0
+       *data[21] = 0
+       *data[22] = 0
+       *data[23] = 0
+       *data[24] = 0
+       *data[25] = 0
+       *data[26] = 0
+       *data[27] = 0
+       *data[28] = 0
+       *data[29] = 0
+    }
+}

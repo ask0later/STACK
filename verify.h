@@ -11,7 +11,7 @@ int ErrorRate(Stack* data);
 
 
 
-void StackDump(Stack* data);
+void StackDump(Stack* data, const char* func, const int line, const char* file);
 //
 
 #endif

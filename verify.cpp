@@ -23,9 +23,9 @@ void Verify(Stack* data)
     }
 }
 
-void StackDump(Stack* data) //
+void StackDump(Stack* data, const char* func, const int line, const char* file)
 {
-    FILE* fp = fopen("logfile.txt", "w");
+    FILE* fp = fopen("logfile.txt", "a");
 
     fprintf(fp, "********************************************************************\n"
                 "Stack[%p] called %s(%d) from %s\n"
@@ -33,12 +33,12 @@ void StackDump(Stack* data) //
                 "   size = %d;\n"
                 "   capacity = %d;\n"
                 "   data[%p]\n"                                        //
-                "       {\n", data->sequence, __PRETTY_FUNCTION__, __LINE__, __FILE__, data->size, data->capacity, data->sequence);
+                "       {\n", data->sequence, func, line, file, data->size, data->capacity, data->sequence);
 
     
     for (int counter = 0; counter < data->size; counter++)
     {
-        fprintf(fp,"       *data[%d] = %d\n", counter, *(data->sequence + counter)); 
+        fprintf(fp,"       *data[%2d] = %d\n", counter, *(data->sequence + counter)); 
     }
 
     if (data->capacity > data->size)
@@ -47,7 +47,7 @@ void StackDump(Stack* data) //
         {
             if (*(data->sequence + counter) == 0)
             {
-                fprintf(fp, "       *data[%d] = %d\n", counter, *(data->sequence + counter)); 
+                fprintf(fp, "       *data[%2d] = %d\n", counter, *(data->sequence + counter)); 
 
             }
             else
@@ -65,25 +65,31 @@ void StackDump(Stack* data) //
 
 void DumpErrors(int error_num)
 {
-    FILE* fp = fopen("logfile.txt", "w");
+    FILE* fp = fopen("logfile.txt", "a");
 
     switch(error_num)
     {
         case ERROR_NULL_DATA:
             fprintf(fp, "ERROR_NULL_DATA");
-            exit(1);
+            abort();
         case ERROR_NEGATIVE_SIZE:
             fprintf(fp, "ERROR_NEGATIVE_SIZE");
-            exit(1);
+            abort();
         case ERROR_NEGATIVE_CAPACITY:
             fprintf(fp, "ERROR_NEGATIVE_CAPACITY");
-            exit(1);
+            abort();
         case ERROR_ARRAY_EXIT:
             fprintf(fp, "ERROR_ARRAY_EXIT");
-            exit(1);
+            abort();
         default:
             fprintf(fp, "ERROR NOT FOUNDED");
             break;
     }
+    fclose(fp);
+}
+
+void CleanFile()
+{
+    FILE* fp = fopen("logfile.txt", "w");
     fclose(fp);
 }

@@ -1,39 +1,168 @@
 ********************************************************************
-Stack[0x60c000000040] called void StackDump(Stack*)(36) from verify.cpp
+Stack[0x602000000010] called void StackCtor(Stack*, int, const char*)(20) from main.cpp
 {
    size = 0;
-   capacity = 30;
-   data[0x60c000000040]
+   capacity = 3;
+   data[0x602000000010]
        {
-       *data[0] = 0
-       *data[1] = 0
-       *data[2] = 0
-       *data[3] = 0
-       *data[4] = 0
-       *data[5] = 0
-       *data[6] = 0
-       *data[7] = 0
-       *data[8] = 0
-       *data[9] = 0
-       *data[10] = 0
-       *data[11] = 0
-       *data[12] = 0
-       *data[13] = 0
-       *data[14] = 0
-       *data[15] = 0
-       *data[16] = 0
-       *data[17] = 0
-       *data[18] = 0
-       *data[19] = 0
-       *data[20] = 0
-       *data[21] = 0
-       *data[22] = 0
-       *data[23] = 0
-       *data[24] = 0
-       *data[25] = 0
-       *data[26] = 0
-       *data[27] = 0
-       *data[28] = 0
-       *data[29] = 0
+       *data[ 0] = 0
+       *data[ 1] = 0
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(22) from main.cpp
+{
+   size = 1;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 0
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(23) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 51
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(24) from main.cpp
+{
+   size = 3;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 51
+       *data[ 2] = 8
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(25) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 51
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(26) from main.cpp
+{
+   size = 1;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 0
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(28) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 98
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(29) from main.cpp
+{
+   size = 1;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 0
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(31) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 210
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(32) from main.cpp
+{
+   size = 1;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 0
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(34) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(35) from main.cpp
+{
+   size = 3;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 20
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(37) from main.cpp
+{
+   size = 2;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 0
+    }
+}
+********************************************************************
+Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(38) from main.cpp
+{
+   size = 3;
+   capacity = 3;
+   data[0x602000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
     }
 }

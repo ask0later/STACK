@@ -3,18 +3,20 @@
 
 #include "directives.h"
 
-const size_t MIN_CAPACITY = 30;
+const size_t MIN_CAPACITY = 3;
 
-void StackCtor(Stack* data);
-void StackDtor(Stack* data);
+void StackCtor(Stack* data, const int line, const char* file);
+void StackDtor(Stack* data, const int line, const char* file);
 
-void StackPush(int value, Stack* data);
-void StackPop(Stack* data);
+void StackPush(int value, Stack* data, const int line, const char* file);
+void StackPop(Stack* data, const int line, const char* file);
 
-void ReCalloc(int more_or_less, Stack* data);
+void Re_Calloc(int more_or_less, Stack* data);
 
 
 void Verify(Stack* data);
-void StackDump(Stack* data);
+void StackDump(Stack* data, const char* func, const int line, const char* file);
+
+void CleanFile();
 
 #endif

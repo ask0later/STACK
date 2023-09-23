@@ -166,3 +166,216 @@ Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(38) f
        *data[ 2] = 53
     }
 }
+********************************************************************
+Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(41) from main.cpp
+{
+   size = 4;
+   capacity = 6;
+   data[0x603000000040]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[4] = 2147483647 NAN (POIZON)
+       *data[5] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(42) from main.cpp
+{
+   size = 5;
+   capacity = 6;
+   data[0x603000000040]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 20
+       *data[5] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(43) from main.cpp
+{
+   size = 6;
+   capacity = 6;
+   data[0x603000000040]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 20
+       *data[ 5] = 223
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(44) from main.cpp
+{
+   size = 7;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 20
+       *data[ 5] = 223
+       *data[ 6] = 221
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(45) from main.cpp
+{
+   size = 6;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 20
+       *data[ 5] = 223
+       *data[ 6] = 0
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(46) from main.cpp
+{
+   size = 5;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 20
+       *data[ 5] = 0
+       *data[ 6] = 0
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(47) from main.cpp
+{
+   size = 4;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 0
+       *data[ 5] = 0
+       *data[ 6] = 0
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(48) from main.cpp
+{
+   size = 5;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 231
+       *data[ 5] = 0
+       *data[ 6] = 0
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(50) from main.cpp
+{
+   size = 6;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 231
+       *data[ 5] = 456
+       *data[ 6] = 0
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(51) from main.cpp
+{
+   size = 7;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 231
+       *data[ 5] = 456
+       *data[ 6] = 564
+       *data[7] = 2147483647 NAN (POIZON)
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}
+********************************************************************
+Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(52) from main.cpp
+{
+   size = 8;
+   capacity = 12;
+   data[0x604000000010]
+       {
+       *data[ 0] = 6
+       *data[ 1] = 30
+       *data[ 2] = 53
+       *data[ 3] = 25
+       *data[ 4] = 231
+       *data[ 5] = 456
+       *data[ 6] = 564
+       *data[ 7] = 674
+       *data[8] = 2147483647 NAN (POIZON)
+       *data[9] = 2147483647 NAN (POIZON)
+       *data[10] = 2147483647 NAN (POIZON)
+       *data[11] = 2147483647 NAN (POIZON)
+    }
+}

@@ -9,8 +9,6 @@
 
 void StackCtor(Stack* data, const int line, const char* file)
 {
-    assert(data != nullptr);
-
     data->capacity = MIN_CAPACITY;
     data->sequence = (int*) calloc(data->capacity, sizeof(int));
     data->size = 0;
@@ -71,7 +69,7 @@ void Re_Calloc(int more_or_less, Stack* data)
     }
 
     printf("%lu\n", data->capacity);
-    data->sequence = (int*) realloc(data->sequence, data->capacity);
+    data->sequence = (int*) realloc(data->sequence, data->capacity * sizeof(int));
     printf("WTF\n");
     
 

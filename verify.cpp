@@ -12,7 +12,7 @@ int ErrorRate(Stack* data)
     if (*(data->rightValera) != INT_MAX)     err |= ERROR_RIGHT_VALERA;
 #endif
     return err;
-}
+} 
 
 void Verify(Stack* data)
 {

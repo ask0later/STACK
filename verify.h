@@ -2,26 +2,10 @@
 #include <climits>
 #include <assert.h>
 #include <stdio.h>
+#include "stack.h"
 
 //#define valera
 //#define hash
-
-
-
-struct Stack
-{
-#ifdef valera
-    unsigned long long int* leftValera;
-#endif
-    int* sequence;
-    size_t size, capacity;
-#ifdef valera
-    unsigned long long int* rightValera;
-#endif 
-#ifdef hach
-    int hash;
-#endif
-}; 
 
 enum Error
 {

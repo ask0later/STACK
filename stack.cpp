@@ -9,6 +9,7 @@ void StackCtor(Stack* data, const int line, const char* file)
     data->size = 0;
 #ifdef valera
     char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + data->capacity * sizeof(int), sizeof(char));
+    
 
     data->leftValera = (unsigned long long*) ptr;
     data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
@@ -37,7 +38,6 @@ void StackDtor(Stack* data)
 #else
     free(data->sequence);
 #endif
-    data->sequence = NULL;
 }
 
 void StackPush(int value, Stack* data, const int line, const char* file)
@@ -63,7 +63,7 @@ void StackPush(int value, Stack* data, const int line, const char* file)
     data->hash = HashFunction(data);
 #endif    
     STACK_DUMP(data);
-    Verify(data);
+    Verify(data); 
 }
 void StackPop(Stack* data, const int line, const char* file)
 {

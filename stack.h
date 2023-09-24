@@ -2,26 +2,10 @@
 #include <climits>
 #include <stdio.h>
 #include <assert.h>
-
-//#define valera
-//#define hash
+#include "enumstruct.h"
 
 
-struct Stack
-{
-#ifdef valera
-    unsigned long long int* leftValera;
-#endif
-    int* sequence;
-    size_t size, capacity;
-#ifdef valera
-    unsigned long long int* rightValera;
-#endif 
-}; 
-
-
-
-const size_t MIN_CAPACITY = 3;
+const size_t MIN_CAPACITY = 4;
 
 void StackCtor(Stack* data, const int line, const char* file);
 void StackDtor(Stack* data);

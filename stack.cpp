@@ -1,5 +1,6 @@
 #include "stack.h"
 
+
 #define STACK_DUMP(data) StackDump(data, __PRETTY_FUNCTION__, line, file)
 
 
@@ -18,11 +19,10 @@ void StackCtor(Stack* data, const int line, const char* file)
     *(data->rightValera) = INT_MAX; 
     
     data->sequence = (int*) (ptr + sizeof(unsigned long long));
-    printf("Ouh shit...");
 #else
     data->sequence = (int*) calloc(data->capacity, sizeof(int));
 #endif
-#ifdef hash
+#ifdef haash
     data->hash = HashFunction(data);
 #endif
     STACK_DUMP(data);
@@ -42,14 +42,12 @@ void StackDtor(Stack* data)
 
 void StackPush(int value, Stack* data, const int line, const char* file)
 {
-#ifdef hash
-    hash_new = HashFunction(data);
-    if (data->hash != hash_new)
+#ifdef haash
+    if (data->hash != HashFunction(data))
     {
-        printf("hash is not equal\n")
-        abort();
+        data->status |= ERROR_HASH_MISSMATCH;
     }
-#endif 
+#endif
     if (data->size == data->capacity)
     {
         Re_Calloc(1, data);
@@ -59,7 +57,7 @@ void StackPush(int value, Stack* data, const int line, const char* file)
     *(data->sequence + data->size) = value;
 
     (data->size)++;
-#ifdef hash
+#ifdef haash
     data->hash = HashFunction(data);
 #endif    
     STACK_DUMP(data);
@@ -67,12 +65,10 @@ void StackPush(int value, Stack* data, const int line, const char* file)
 }
 void StackPop(Stack* data, const int line, const char* file)
 {
-#ifdef hash
-    hash_new = HashFunction(data);
-    if (data->hash != hash_new)
+#ifdef haash
+    if (data->hash != HashFunction(data))
     {
-        printf("hash is not equal\n")
-        abort();
+        data->status |= ERROR_HASH_MISSMATCH;
     }
 #endif
 
@@ -85,7 +81,7 @@ void StackPop(Stack* data, const int line, const char* file)
     
     *(data->sequence + data->size) = 0;
 
-#ifdef hash
+#ifdef haash
     data->hash = HashFunction(data);
 #endif  
     STACK_DUMP(data);
@@ -109,7 +105,11 @@ void Re_Calloc(int more_or_less, Stack* data)
     
     data->sequence = (int*) (ptr + sizeof(unsigned long long));
 
+
+    data->leftValera = (unsigned long long*) ptr;
     data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
+    
+    *(data->leftValera) = INT_MAX;
     *(data->rightValera) = INT_MAX;
 #else
     data->sequence = (int*) realloc(data->sequence, data->capacity * sizeof(int));

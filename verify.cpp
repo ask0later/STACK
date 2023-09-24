@@ -3,13 +3,16 @@
 int ErrorRate(Stack* data)
 {
     int err = 0;
-    if (data == NULL)                        err |= ERROR_NULL_DATA;  
-    if (data->size < 0)                      err |= ERROR_NEGATIVE_SIZE; 
-    if (data->capacity < 0)                  err |= ERROR_NEGATIVE_CAPACITY;
-    if ((data->capacity) < (data->size))     err |= ERROR_ARRAY_EXIT; 
+    if (data == NULL)                       err |= ERROR_NULL_DATA;  
+    if (data->size < 0)                     err |= ERROR_NEGATIVE_SIZE; 
+    if (data->capacity < 0)                 err |= ERROR_NEGATIVE_CAPACITY;
+    if ((data->capacity) < (data->size))    err |= ERROR_ARRAY_EXIT; 
 #ifdef valera
-    if (*(data->leftValera) != INT_MAX)      err |= ERROR_LEFT_VALERA;
-    if (*(data->rightValera) != INT_MAX)     err |= ERROR_RIGHT_VALERA;
+    if (*(data->leftValera) != INT_MAX)     err |= ERROR_LEFT_VALERA;
+    if (*(data->rightValera) != INT_MAX)    err |= ERROR_RIGHT_VALERA;
+#endif
+#ifdef haash
+                                            err |= data->status;
 #endif
     return err;
 } 
@@ -91,6 +94,10 @@ void DumpErrors(int error_num)
         case ERROR_RIGHT_VALERA:
             fprintf(fp, "ERROR_RIGHT_VALERA");
 #endif
+#ifdef haash
+        case ERROR_HASH_MISSMATCH:
+            fprintf(fp, "ERROR_HASH_MISSMATCH");
+#endif
         default:
             fprintf(fp, "ERROR NOT FOUNDED");
             break;
@@ -107,44 +114,49 @@ void CleanFile()
 
 int HashFunction(Stack* data)
 {
-#ifdef hash
+#ifdef haash
     unsigned long hash_buf = 5381;
     int counter1;
     char* ptr1 = (char*) data->sequence;
-    while (counter1 = *ptr1++)
+    while (counter1 = *ptr1)
     {
+        ptr1++;
         hash_buf = ((hash_buf << 5) + hash_buf) + counter1;
     }
 
     unsigned long hash_size = 5381;
     int counter2;
-    char* ptr2 = (char*) data->size;
-    while (counter2 = *ptr2++)
+    char* ptr2 = (char*) &(data->size);
+    while (counter2 = *ptr2)
     {
+        ptr2++;
         hash_size = ((hash_size << 5) + hash_size) + counter2;
     }
 
     unsigned long hash_capacity = 5381;
     int counter3;
-    char* ptr3 = (char*) data->capacity;
-    while (counter3 = *ptr3++)
+    char* ptr3 = (char*) &(data->capacity);
+    while (counter3 = *ptr3)
     {
+        ptr3++;
         hash_capacity = ((hash_capacity << 5) + hash_capacity) + counter3;
     }
 
     unsigned long hash_left_valera = 5381;
     int counter4;
     char* ptr4 = (char*) data->leftValera;
-    while (counter4 = *ptr4++)
+    while (counter4 = *ptr4)
     {
+        ptr4++;
         hash_left_valera = ((hash_left_valera << 5) + hash_left_valera) + counter4;
     }
 
     unsigned long hash_right_valera = 5381;
     int counter5;
     char* ptr5 = (char*) data->rightValera;
-    while (counter5 = *ptr5++)
+    while (counter5 = *ptr5)
     {
+        ptr5++;
         hash_right_valera = ((hash_right_valera << 5) + hash_right_valera) + counter5;
     }
 

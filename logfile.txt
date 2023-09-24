@@ -1,192 +1,204 @@
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackCtor(Stack*, int, const char*)(17) from main.cpp
+Stack[0x603000000048] called void StackCtor(Stack*, int, const char*)(17) from main.cpp
 {
    size = 0;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 0
        *data[ 1] = 0
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(19) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(19) from main.cpp
 {
    size = 1;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 0
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(20) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(20) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 51
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(21) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(21) from main.cpp
 {
    size = 3;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 51
        *data[ 2] = 8
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(22) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(22) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 51
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(23) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(23) from main.cpp
 {
    size = 1;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 0
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(25) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(25) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 98
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(26) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(26) from main.cpp
 {
    size = 1;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 0
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(28) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(28) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 210
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(29) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(29) from main.cpp
 {
    size = 1;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 0
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(31) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(31) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 30
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(32) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(32) from main.cpp
 {
    size = 3;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 30
        *data[ 2] = 20
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPop(Stack*, int, const char*)(34) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(34) from main.cpp
 {
    size = 2;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 30
        *data[ 2] = 0
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x602000000010] called void StackPush(int, Stack*, int, const char*)(35) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(35) from main.cpp
 {
    size = 3;
-   capacity = 3;
-   data[0x602000000010]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 30
        *data[ 2] = 53
+       *data[ 3] = 0
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(38) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(38) from main.cpp
 {
    size = 4;
-   capacity = 6;
-   data[0x603000000040]
+   capacity = 4;
+   data[0x603000000048]
        {
        *data[ 0] = 6
        *data[ 1] = 30
        *data[ 2] = 53
        *data[ 3] = 25
-       *data[4] = 2147483647 NAN (POIZON)
-       *data[5] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(39) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(39) from main.cpp
 {
    size = 5;
-   capacity = 6;
-   data[0x603000000040]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -194,14 +206,16 @@ Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(39) f
        *data[ 3] = 25
        *data[ 4] = 20
        *data[5] = 2147483647 NAN (POIZON)
+       *data[6] = 2147483647 NAN (POIZON)
+       *data[7] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(40) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(40) from main.cpp
 {
    size = 6;
-   capacity = 6;
-   data[0x603000000040]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -209,14 +223,16 @@ Stack[0x603000000040] called void StackPush(int, Stack*, int, const char*)(40) f
        *data[ 3] = 25
        *data[ 4] = 20
        *data[ 5] = 223
+       *data[6] = 2147483647 NAN (POIZON)
+       *data[7] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(41) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(41) from main.cpp
 {
    size = 7;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -226,18 +242,14 @@ Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(41) f
        *data[ 5] = 223
        *data[ 6] = 221
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(42) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(42) from main.cpp
 {
    size = 6;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -247,18 +259,14 @@ Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(42) from ma
        *data[ 5] = 223
        *data[ 6] = 0
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(43) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(43) from main.cpp
 {
    size = 5;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -268,18 +276,14 @@ Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(43) from ma
        *data[ 5] = 0
        *data[ 6] = 0
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(44) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(44) from main.cpp
 {
    size = 4;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -289,18 +293,14 @@ Stack[0x604000000010] called void StackPop(Stack*, int, const char*)(44) from ma
        *data[ 5] = 0
        *data[ 6] = 0
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(45) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(45) from main.cpp
 {
    size = 5;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -310,18 +310,14 @@ Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(45) f
        *data[ 5] = 0
        *data[ 6] = 0
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(47) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(47) from main.cpp
 {
    size = 6;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -331,18 +327,14 @@ Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(47) f
        *data[ 5] = 456
        *data[ 6] = 0
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(48) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(48) from main.cpp
 {
    size = 7;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -352,18 +344,14 @@ Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(48) f
        *data[ 5] = 456
        *data[ 6] = 564
        *data[7] = 2147483647 NAN (POIZON)
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }
 &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(49) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(49) from main.cpp
 {
    size = 8;
-   capacity = 12;
-   data[0x604000000010]
+   capacity = 8;
+   data[0x604000000018]
        {
        *data[ 0] = 6
        *data[ 1] = 30
@@ -373,9 +361,5 @@ Stack[0x604000000010] called void StackPush(int, Stack*, int, const char*)(49) f
        *data[ 5] = 456
        *data[ 6] = 564
        *data[ 7] = 674
-       *data[8] = 2147483647 NAN (POIZON)
-       *data[9] = 2147483647 NAN (POIZON)
-       *data[10] = 2147483647 NAN (POIZON)
-       *data[11] = 2147483647 NAN (POIZON)
     }
 }

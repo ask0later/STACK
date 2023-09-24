@@ -107,6 +107,7 @@ void CleanFile()
 
 int HashFunction(Stack* data)
 {
+#ifdef hash
     unsigned long hash_buf = 5381;
     int counter1;
     char* ptr1 = (char*) data->sequence;
@@ -148,4 +149,5 @@ int HashFunction(Stack* data)
     }
 
     return hash_right_valera + hash_left_valera + hash_capacity + hash_size + hash_buf;
+#endif
 }

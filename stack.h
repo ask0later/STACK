@@ -31,7 +31,7 @@ void StackPop(Stack* data, const int line, const char* file);
 
 void Re_Calloc(int more_or_less, Stack* data);
 
-
+int HashFunction(Stack* data);
 void Verify(Stack* data);
 void StackDump(Stack* data, const char* func, const int line, const char* file);
 

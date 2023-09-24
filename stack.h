@@ -1,7 +1,25 @@
-#ifndef STACK_H
-#define STACK_H
+#include <stdlib.h>
+#include <climits>
+#include <stdio.h>
+#include <assert.h>
 
-#include "directives.h"
+//#define valera
+//#define hash
+
+
+struct Stack
+{
+#ifdef valera
+    unsigned long long int* leftValera;
+#endif
+    int* sequence;
+    size_t size, capacity;
+#ifdef valera
+    unsigned long long int* rightValera;
+#endif 
+}; 
+
+
 
 const size_t MIN_CAPACITY = 3;
 
@@ -18,5 +36,3 @@ void Verify(Stack* data);
 void StackDump(Stack* data, const char* func, const int line, const char* file);
 
 void CleanFile();
-
-#endif

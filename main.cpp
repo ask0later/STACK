@@ -1,4 +1,3 @@
-#include "directives.h"
 #include "stack.h"
 
 #define STACK_PUSH(value, data) StackPush(value, data, __LINE__, __FILE__)

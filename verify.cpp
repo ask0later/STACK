@@ -1,5 +1,4 @@
 #include "verify.h"
-#include <climits>
 
 int ErrorRate(Stack* data)
 {
@@ -32,7 +31,7 @@ void StackDump(Stack* data, const char* func, const int line, const char* file)
 {
     FILE* fp = fopen("logfile.txt", "a");
 
-    fprintf(fp, "____________________________________________________________________________\n"
+    fprintf(fp, "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n"
                 "Stack[%p] called %s(%d) from %s\n"
                 "{\n"
                 "   size = %d;\n"
@@ -86,12 +85,12 @@ void DumpErrors(int error_num)
         case ERROR_ARRAY_EXIT:
             fprintf(fp, "ERROR_ARRAY_EXIT");
             abort();
-// #ifdef valera
-//         case ERROR_LEFT_VALERA:
-//             fprintf(fp, "ERROR_LEFT_VALERA");
-//         case ERROR_RIGHT_VALERA:
-//             fprintf(fp, "ERROR_RIGHT_VALERA");
-// #endif
+#ifdef valera
+        case ERROR_LEFT_VALERA:
+            fprintf(fp, "ERROR_LEFT_VALERA");
+        case ERROR_RIGHT_VALERA:
+            fprintf(fp, "ERROR_RIGHT_VALERA");
+#endif
         default:
             fprintf(fp, "ERROR NOT FOUNDED");
             break;
@@ -104,4 +103,49 @@ void CleanFile()
 {
     FILE* fp = fopen("logfile.txt", "w");
     fclose(fp);
+}
+
+int HashFunction(Stack* data)
+{
+    unsigned long hash_buf = 5381;
+    int counter1;
+    char* ptr1 = (char*) data->sequence;
+    while (counter1 = *ptr1++)
+    {
+        hash_buf = ((hash_buf << 5) + hash_buf) + counter1;
+    }
+
+    unsigned long hash_size = 5381;
+    int counter2;
+    char* ptr2 = (char*) data->size;
+    while (counter2 = *ptr2++)
+    {
+        hash_size = ((hash_size << 5) + hash_size) + counter2;
+    }
+
+    unsigned long hash_capacity = 5381;
+    int counter3;
+    char* ptr3 = (char*) data->capacity;
+    while (counter3 = *ptr3++)
+    {
+        hash_capacity = ((hash_capacity << 5) + hash_capacity) + counter3;
+    }
+
+    unsigned long hash_left_valera = 5381;
+    int counter4;
+    char* ptr4 = (char*) data->leftValera;
+    while (counter4 = *ptr4++)
+    {
+        hash_left_valera = ((hash_left_valera << 5) + hash_left_valera) + counter4;
+    }
+
+    unsigned long hash_right_valera = 5381;
+    int counter5;
+    char* ptr5 = (char*) data->rightValera;
+    while (counter5 = *ptr5++)
+    {
+        hash_right_valera = ((hash_right_valera << 5) + hash_right_valera) + counter5;
+    }
+
+    return hash_right_valera + hash_left_valera + hash_capacity + hash_size + hash_buf;
 }

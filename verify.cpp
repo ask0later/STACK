@@ -1,12 +1,17 @@
 #include "verify.h"
+#include <climits>
 
 int ErrorRate(Stack* data)
 {
     int err = 0;
-    if (data == NULL)                       err |= ERROR_NULL_DATA;  
-    if (data->size < 0)                     err |= ERROR_NEGATIVE_SIZE; 
-    if (data->capacity < 0)                 err |= ERROR_NEGATIVE_CAPACITY; //1011010 err = 2 + 8 + 16 + 64 = 90
-    if ((data->capacity) < (data->size))    err |= ERROR_ARRAY_EXIT; // выход за массив!
+    if (data == NULL)                        err |= ERROR_NULL_DATA;  
+    if (data->size < 0)                      err |= ERROR_NEGATIVE_SIZE; 
+    if (data->capacity < 0)                  err |= ERROR_NEGATIVE_CAPACITY;
+    if ((data->capacity) < (data->size))     err |= ERROR_ARRAY_EXIT; 
+#ifdef valera
+    if (*(data->leftValera) != INT_MAX)      err |= ERROR_LEFT_VALERA;
+    if (*(data->rightValera) != INT_MAX)     err |= ERROR_RIGHT_VALERA;
+#endif
     return err;
 }
 
@@ -27,7 +32,7 @@ void StackDump(Stack* data, const char* func, const int line, const char* file)
 {
     FILE* fp = fopen("logfile.txt", "a");
 
-    fprintf(fp, "********************************************************************\n"
+    fprintf(fp, "____________________________________________________________________________\n"
                 "Stack[%p] called %s(%d) from %s\n"
                 "{\n"
                 "   size = %d;\n"
@@ -81,12 +86,19 @@ void DumpErrors(int error_num)
         case ERROR_ARRAY_EXIT:
             fprintf(fp, "ERROR_ARRAY_EXIT");
             abort();
+// #ifdef valera
+//         case ERROR_LEFT_VALERA:
+//             fprintf(fp, "ERROR_LEFT_VALERA");
+//         case ERROR_RIGHT_VALERA:
+//             fprintf(fp, "ERROR_RIGHT_VALERA");
+// #endif
         default:
             fprintf(fp, "ERROR NOT FOUNDED");
             break;
     }
     fclose(fp);
 }
+
 
 void CleanFile()
 {

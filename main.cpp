@@ -5,17 +5,15 @@
 #define STACK_POP(data) StackPop(data, __LINE__, __FILE__)
 
 #define STACKCTOR(data) StackCtor(data, __LINE__, __FILE__)
-#define STACKDTOR(data) StackDtor(data, __LINE__, __FILE__)
+#define STACKDTOR(data) StackDtor(data)
 
 
 
 int main()
 {
     CleanFile();
-    printf("adas\n");
 
     struct Stack data;
-    printf("asdsada\n");
 
     STACKCTOR(&data);
 

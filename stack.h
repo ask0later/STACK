@@ -6,7 +6,7 @@
 const size_t MIN_CAPACITY = 3;
 
 void StackCtor(Stack* data, const int line, const char* file);
-void StackDtor(Stack* data, const int line, const char* file);
+void StackDtor(Stack* data);
 
 void StackPush(int value, Stack* data, const int line, const char* file);
 void StackPop(Stack* data, const int line, const char* file);

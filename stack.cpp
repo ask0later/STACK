@@ -10,20 +10,35 @@
 void StackCtor(Stack* data, const int line, const char* file)
 {
     data->capacity = MIN_CAPACITY;
-    data->sequence = (int*) calloc(data->capacity, sizeof(int));
     data->size = 0;
-    printf("abcd");
+#ifdef valera
+    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + data->capacity * sizeof(int), sizeof(char));
+
+    data->leftValera = (unsigned long long*) ptr;
+    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
     
+    *(data->leftValera) = INT_MAX;
+    *(data->rightValera) = INT_MAX; 
+    
+    data->sequence = (int*) (ptr + sizeof(unsigned long long));
+    printf("Ouh shit...");
+#else
+    data->sequence = (int*) calloc(data->capacity, sizeof(int));
+#endif
     STACK_DUMP(data);
 }
  
-
-void StackDtor(Stack* data, const int line, const char* file)
+void StackDtor(Stack* data)
 {
-    free(data->sequence);
-    data->sequence = NULL;
     data->size = INT_MAX;
     data->capacity = INT_MAX;
+#ifdef valera
+    int* ptr = data->sequence - sizeof(unsigned long long) / sizeof(int);
+    free(ptr);
+#else
+    free(data->sequence);
+#endif
+    data->sequence = NULL;
 }
 
 void StackPush(int value, Stack* data, const int line, const char* file)
@@ -58,7 +73,6 @@ void StackPop(Stack* data, const int line, const char* file)
 
 void Re_Calloc(int more_or_less, Stack* data)
 {
-    printf("WTF\n");
     if (more_or_less == 1)
     {
         data->capacity = (data->capacity) * 2;
@@ -68,10 +82,17 @@ void Re_Calloc(int more_or_less, Stack* data)
         data->capacity = (data->capacity) / 2;
     }
 
-    printf("%lu\n", data->capacity);
-    data->sequence = (int*) realloc(data->sequence, data->capacity * sizeof(int));
-    printf("WTF\n");
+#ifdef valera
+    char* ptr = (char*) (data->sequence - sizeof(unsigned long long) / sizeof(int));
+    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + data->capacity * sizeof(int)) * sizeof(char));
     
+    data->sequence = (int*) (ptr + (char) sizeof(unsigned long long));
+
+    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
+    *(data->rightValera) = INT_MAX;
+#else
+    data->sequence = (int*) realloc(data->sequence, data->capacity * sizeof(int));
+#endif
 
     if (more_or_less == 1)
     {
@@ -80,8 +101,5 @@ void Re_Calloc(int more_or_less, Stack* data)
             *(data->sequence + counter) = INT_MAX;
         }
     }
-        
-    
-    printf("WTF\n");
 }
 

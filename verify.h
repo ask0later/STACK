@@ -9,7 +9,7 @@ void DumpErrors(int error_num);
 void Verify(Stack* data);
 int ErrorRate(Stack* data);
 
-
+void CleanFile();
 
 void StackDump(Stack* data, const char* func, const int line, const char* file);
 //

@@ -8,23 +8,27 @@ void StackCtor(Stack* data, const int line, const char* file)
 {
     data->capacity = MIN_CAPACITY;
     data->size = 0;
-#ifdef valera
-    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + data->capacity * sizeof(int), sizeof(char));
-    
+    VerifyCapacity(data);
 
+#ifdef valera
+    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + data->capacity * sizeof(elem_t), sizeof(char));
+    
     data->leftValera = (unsigned long long*) ptr;
-    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
+    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(elem_t));
     
     *(data->leftValera) = INT_MAX;
     *(data->rightValera) = INT_MAX; 
     
-    data->sequence = (int*) (ptr + sizeof(unsigned long long));
+    data->sequence = (elem_t*) (ptr + sizeof(unsigned long long));
 #else
-    data->sequence = (int*) calloc(data->capacity, sizeof(int));
+    data->sequence = (elem_t*) calloc(data->capacity, sizeof(elem_t));
 #endif
+
 #ifdef haash
-    data->hash = HashFunction(data);
+    data->hash = 0;
+    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
 #endif
+
     STACK_DUMP(data);
 }
  
@@ -32,8 +36,9 @@ void StackDtor(Stack* data)
 {
     data->size = INT_MAX;
     data->capacity = INT_MAX;
+
 #ifdef valera
-    int* ptr = data->sequence - sizeof(unsigned long long) / sizeof(int);
+    int* ptr = data->sequence - sizeof(unsigned long long) / sizeof(elem_t);
     free(ptr);
 #else
     free(data->sequence);
@@ -43,30 +48,39 @@ void StackDtor(Stack* data)
 void StackPush(int value, Stack* data, const int line, const char* file)
 {
 #ifdef haash
-    if (data->hash != HashFunction(data))
+    long unsigned int hash_old = data->hash;
+    data->hash = 0;
+    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
+    if (hash_old != data->hash)
     {
         data->status |= ERROR_HASH_MISSMATCH;
     }
 #endif
+
     if (data->size == data->capacity)
     {
         Re_Calloc(1, data);
-        printf("%lu\n", data->capacity);
     }
 
     *(data->sequence + data->size) = value;
 
     (data->size)++;
+
 #ifdef haash
-    data->hash = HashFunction(data);
+    data->hash = 0;
+    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
 #endif    
+
     STACK_DUMP(data);
     Verify(data); 
 }
 void StackPop(Stack* data, const int line, const char* file)
 {
 #ifdef haash
-    if (data->hash != HashFunction(data))
+    long unsigned int hash_old = data->hash;
+    data->hash = 0;
+    data->hash = HashFunction(data->sequence) + HashFunction(&(data->leftValera));
+    if (hash_old != data->hash)
     {
         data->status |= ERROR_HASH_MISSMATCH;
     }
@@ -78,12 +92,13 @@ void StackPop(Stack* data, const int line, const char* file)
     }
     
     (data->size)--;
-    
     *(data->sequence + data->size) = 0;
 
 #ifdef haash
-    data->hash = HashFunction(data);
+    data->hash = 0;
+    data->hash = HashFunction(data->sequence) + HashFunction(&(data->leftValera));
 #endif  
+    
     STACK_DUMP(data);
     Verify(data);
 }
@@ -101,7 +116,7 @@ void Re_Calloc(int more_or_less, Stack* data)
 
 #ifdef valera
     char* ptr = (char*) (data->sequence - sizeof(unsigned long long) / sizeof(int));
-    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + data->capacity * sizeof(int)) * sizeof(char));
+    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + data->capacity * sizeof(elem_t)) * sizeof(char));
     
     data->sequence = (int*) (ptr + sizeof(unsigned long long));
 

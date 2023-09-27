@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "enumstruct.h"
 
-const int NUM_ERRORS = 4;
+const int NUM_ERRORS = 9;
 
 int StackVerify(Stack* data);
 
@@ -18,3 +18,4 @@ void StackDump(Stack* data, const char* func, const int line, const char* file);
 
 long unsigned int HashFunction(void* ptr);
 void VerifyCapacity(Stack* data);
+void NullVerify(Stack* data);

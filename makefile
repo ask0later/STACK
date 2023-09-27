@@ -16,13 +16,13 @@ all: $(TARGET)
 $(TARGET): main.o stack.o verify.o
 	g++ main.o stack.o verify.o $(CFLAGS)
 
-main.o: main.cpp
+main.o: main.cpp stack.h
 	$(COMPILE) main.cpp
 
-verify.o: verify.cpp
+verify.o: verify.cpp verify.h enumstruct.h
 	$(COMPILE) verify.cpp
 
-stack.o: stack.cpp
+stack.o: stack.cpp stack.h enumstruct.h
 	$(COMPILE) stack.cpp
 
 clean:

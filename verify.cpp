@@ -4,8 +4,9 @@ int ErrorRate(Stack* data)
 {
     int err = 0;
     if (data == NULL)                           err |= ERROR_NULL_DATA;  
+    if (data->capacity < 0)                     err |= NEGATIVE_CAPACITY;
+    if (data->size < 0)                         err |= NEGATIVE_SIZE;
     if ((data->capacity) < (data->size))        err |= ERROR_ARRAY_EXIT; 
-    if ((data->capacity) > (data->size) * 4)    err |= ERROR_EXTRA_MEM;
 
 #ifdef valera
     if (*(data->leftValera) != INT_MAX)         err |= ERROR_LEFT_VALERA;
@@ -39,29 +40,29 @@ void StackDump(Stack* data, const char* func, const int line, const char* file)
     fprintf(fp, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
                 "Stack[%p] called %s(%d) from %s\n"
                 "{\n"
-                "   size = %lu;\n"
-                "   capacity = %lu;\n"
+                "   size = %d;\n"
+                "   capacity = %d;\n"
                 "   data[%p]\n"
                 "   {\n", data->sequence, func, line, file, data->size, data->capacity, data->sequence);
 
     
-    for (size_t counter = 0; counter < data->size; counter++)
+    for (int counter = 0; counter < data->size; counter++)
     {
-        fprintf(fp,"       *data[%2lu] = %d\n", counter, *(data->sequence + counter)); 
+        fprintf(fp,"       *data[%2d] = %d\n", counter, *(data->sequence + counter)); 
     }
 
     if (data->capacity > data->size)
     {
-        for (size_t counter = data->size; counter < data->capacity; counter++)
+        for (int counter = data->size; counter < data->capacity; counter++)
         {
             if (*(data->sequence + counter) == 0)
             {
-                fprintf(fp, "       *data[%2lu] = %d\n", counter, *(data->sequence + counter)); 
+                fprintf(fp, "       *data[%2d] = %d\n", counter, *(data->sequence + counter)); 
 
             }
             else
             {
-                fprintf(fp, "       *data[%lu] = %d (POISON)\n", counter, *(data->sequence + counter));
+                fprintf(fp, "       *data[%d] = %d (POISON)\n", counter, *(data->sequence + counter));
             }
         }
     }
@@ -80,6 +81,14 @@ void DumpErrors(int error_num)
         case ERROR_NULL_DATA:
             fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
                         "       ERROR_NULL_DATA\n");
+            exit(1);
+        case NEGATIVE_CAPACITY:
+            fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
+                        "       NEGATIVE_CAPACITY\n");
+            exit(1);
+        case NEGATIVE_SIZE:
+            fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
+                        "       NEGATIVE_SIZE\n");
             exit(1);
         case ERROR_ARRAY_EXIT:
             fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
@@ -124,12 +133,12 @@ void CleanFile()
 
 long unsigned int HashFunction(void* ptr)
 {
-    char counter;
+    int counter;
     unsigned long hash = 5381;
     while ((counter = *(char*) ptr))
     {
         (char*) ptr++;
-        hash = ((hash << 5) + hash) + (long unsigned)counter;
+        hash = ((hash << 5) + hash) + counter;
     }
     return hash;
 }
@@ -138,5 +147,13 @@ void VerifyCapacity(Stack* data)
     while (data->capacity % 2 != 0)
     {
         data->capacity++;
+    }
+}
+void NullVerify(Stack* data)
+{
+    if (data == NULL)
+    {
+        printf("!!ABORT!!\npointer is NULL\n:((((");
+        exit(1);
     }
 }

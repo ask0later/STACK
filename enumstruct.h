@@ -7,7 +7,7 @@ struct Stack
     unsigned long long int* leftValera;
 #endif
     elem_t* sequence;
-    size_t size, capacity;
+    int size, capacity;
 #ifdef valera
     unsigned long long int* rightValera;
 #endif 
@@ -20,15 +20,17 @@ struct Stack
 enum Error
 {
     NO_ERROR = 0,
-    ERROR_NULL_DATA = 1,
-    ERROR_ARRAY_EXIT = 2,
-    ERROR_EXTRA_MEM = 4,
+    NEGATIVE_CAPACITY = 1,
+    NEGATIVE_SIZE = 2,
+    ERROR_NULL_DATA = 4,
+    ERROR_ARRAY_EXIT = 8,
+    ERROR_EXTRA_MEM = 16,
 #ifdef valera
-    ERROR_LEFT_VALERA = 8,
-    ERROR_RIGHT_VALERA = 16,
+    ERROR_LEFT_VALERA = 32,
+    ERROR_RIGHT_VALERA = 64,
 #endif
 #ifdef haash
-    ERROR_HASH_MISSMATCH = 32
+    ERROR_HASH_MISSMATCH = 128
 #endif
 };
 

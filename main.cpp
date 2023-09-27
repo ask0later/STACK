@@ -10,6 +10,7 @@
 
 int main() 
 {
+  
     CleanFile();
 
     struct Stack data;
@@ -21,6 +22,8 @@ int main()
     STACK_PUSH(8, &data);
     STACK_POP(&data);
     STACK_POP(&data);
+
+    
 
     STACK_PUSH(98, &data);
     STACK_POP(&data);
@@ -34,11 +37,11 @@ int main()
     STACK_POP(&data);
     STACK_PUSH(53, &data);
 
-
     STACK_PUSH(25, &data);
     STACK_PUSH(20, &data);
     STACK_PUSH(223, &data);
     STACK_PUSH(221, &data);
+
     STACK_POP(&data);
     STACK_POP(&data);
     STACK_POP(&data);

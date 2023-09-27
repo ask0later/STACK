@@ -11,17 +11,17 @@ void StackCtor(Stack* data, const int line, const char* file)
     VerifyCapacity(data);
 
 #ifdef valera
-    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + data->capacity * sizeof(elem_t), sizeof(char));
+    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t), sizeof(char));
     
     data->leftValera = (unsigned long long*) ptr;
-    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(elem_t));
+    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t));
     
     *(data->leftValera) = INT_MAX;
     *(data->rightValera) = INT_MAX; 
     
     data->sequence = (elem_t*) (ptr + sizeof(unsigned long long));
 #else
-    data->sequence = (elem_t*) calloc(data->capacity, sizeof(elem_t));
+    data->sequence = (elem_t*) calloc((long unsigned)data->capacity, sizeof(elem_t));
 #endif
 
 #ifdef haash
@@ -47,6 +47,8 @@ void StackDtor(Stack* data)
 
 void StackPush(int value, Stack* data, const int line, const char* file)
 {
+    NullVerify(data);
+    Verify(data);
 #ifdef haash
     long unsigned int hash_old = data->hash;
     data->hash = 0;
@@ -73,9 +75,12 @@ void StackPush(int value, Stack* data, const int line, const char* file)
 
     STACK_DUMP(data);
     Verify(data); 
+    printf("%lu\n", data->hash);
 }
 void StackPop(Stack* data, const int line, const char* file)
 {
+    NullVerify(data);
+    Verify(data);
 #ifdef haash
     long unsigned int hash_old = data->hash;
     data->hash = 0;
@@ -97,8 +102,8 @@ void StackPop(Stack* data, const int line, const char* file)
 #ifdef haash
     data->hash = 0;
     data->hash = HashFunction(data->sequence) + HashFunction(&(data->leftValera));
+    //HashFunction(data->sequence, sizeof(data->sequence)) + HashFunction(&(data->leftValera), sizeof(data)
 #endif  
-    
     STACK_DUMP(data);
     Verify(data);
 }
@@ -116,13 +121,13 @@ void Re_Calloc(int more_or_less, Stack* data)
 
 #ifdef valera
     char* ptr = (char*) (data->sequence - sizeof(unsigned long long) / sizeof(int));
-    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + data->capacity * sizeof(elem_t)) * sizeof(char));
+    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t)) * sizeof(char));
     
     data->sequence = (int*) (ptr + sizeof(unsigned long long));
 
 
     data->leftValera = (unsigned long long*) ptr;
-    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + data->capacity * sizeof(int));
+    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(int));
     
     *(data->leftValera) = INT_MAX;
     *(data->rightValera) = INT_MAX;
@@ -132,7 +137,7 @@ void Re_Calloc(int more_or_less, Stack* data)
 
     if (more_or_less == 1)
     {
-        for(size_t counter = data->capacity / 2; counter < data->capacity; counter++)
+        for(int counter = data->capacity / 2; counter < data->capacity; counter++)
         {
             *(data->sequence + counter) = INT_MAX;
         }

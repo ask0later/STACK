@@ -77,7 +77,7 @@ Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(23) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(25) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(27) from main.cpp
 {
    size = 2;
    capacity = 4;
@@ -90,7 +90,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(25) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(26) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(28) from main.cpp
 {
    size = 1;
    capacity = 4;
@@ -103,7 +103,7 @@ Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(26) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(28) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(30) from main.cpp
 {
    size = 2;
    capacity = 4;
@@ -116,7 +116,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(28) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(29) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(31) from main.cpp
 {
    size = 1;
    capacity = 4;
@@ -129,7 +129,7 @@ Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(29) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(31) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(33) from main.cpp
 {
    size = 2;
    capacity = 4;
@@ -142,7 +142,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(31) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(32) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(34) from main.cpp
 {
    size = 3;
    capacity = 4;
@@ -155,7 +155,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(32) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(34) from main.cpp
+Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(36) from main.cpp
 {
    size = 2;
    capacity = 4;
@@ -168,7 +168,7 @@ Stack[0x603000000048] called void StackPop(Stack*, int, const char*)(34) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(35) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(37) from main.cpp
 {
    size = 3;
    capacity = 4;
@@ -181,7 +181,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(35) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(38) from main.cpp
+Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(39) from main.cpp
 {
    size = 4;
    capacity = 4;
@@ -194,7 +194,7 @@ Stack[0x603000000048] called void StackPush(int, Stack*, int, const char*)(38) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(39) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(40) from main.cpp
 {
    size = 5;
    capacity = 8;
@@ -211,7 +211,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(39) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(40) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(41) from main.cpp
 {
    size = 6;
    capacity = 8;
@@ -228,7 +228,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(40) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(41) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(42) from main.cpp
 {
    size = 7;
    capacity = 8;
@@ -245,7 +245,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(41) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(42) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(44) from main.cpp
 {
    size = 6;
    capacity = 8;
@@ -262,7 +262,7 @@ Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(42) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(43) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(45) from main.cpp
 {
    size = 5;
    capacity = 8;
@@ -279,7 +279,7 @@ Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(43) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(44) from main.cpp
+Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(46) from main.cpp
 {
    size = 4;
    capacity = 8;
@@ -296,7 +296,7 @@ Stack[0x604000000018] called void StackPop(Stack*, int, const char*)(44) from ma
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(45) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(47) from main.cpp
 {
    size = 5;
    capacity = 8;
@@ -313,7 +313,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(45) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(47) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(49) from main.cpp
 {
    size = 6;
    capacity = 8;
@@ -330,7 +330,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(47) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(48) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(50) from main.cpp
 {
    size = 7;
    capacity = 8;
@@ -347,7 +347,7 @@ Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(48) f
     }
 }
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(49) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(51) from main.cpp
 {
    size = 8;
    capacity = 8;

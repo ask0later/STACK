@@ -5,7 +5,7 @@
 #include "enumstruct.h"
 
 
-const size_t MIN_CAPACITY = 3;
+const int MIN_CAPACITY = 3;
 
 void StackCtor(Stack* data, const int line, const char* file);
 void StackDtor(Stack* data);
@@ -18,6 +18,9 @@ void Re_Calloc(int more_or_less, Stack* data);
 void VerifyCapacity(Stack* data);
 long unsigned int HashFunction(void* ptr);
 void Verify(Stack* data);
+void NullVerify(Stack* data);
+
+
 void StackDump(Stack* data, const char* func, const int line, const char* file);
 
 void CleanFile();

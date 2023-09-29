@@ -26,11 +26,13 @@ int main()
     STACK_PUSH(2, &data);
     STACK_PUSH(221, &data);
 
-    data.size = 5;
 
     STACK_POP(&data);
     STACK_POP(&data);
+
     STACK_PUSH(231, &data);
+
+    data.capacity = 20;
 
     STACK_PUSH(456, &data);
     STACK_PUSH(564, &data);

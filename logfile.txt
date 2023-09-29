@@ -1,8 +1,8 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x604000000018] called elem_t StackPop(Stack*, int, const char*)(31) from main.cpp
+Stack[0x604000000018] called void StackPush(int, Stack*, int, const char*)(37) from main.cpp
 {
-   size = 5;
-   capacity = 8;
+   size = 6;
+   capacity = 20;
    data[0x604000000018]
    {
     }

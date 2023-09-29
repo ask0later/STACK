@@ -33,6 +33,8 @@ int ErrorRate(Stack* data)
 
 void Verify(Stack* data, int errors, const char* func, const int line, const char* file)
 {
+    if (errors == 0)
+        return;
     int value = 1;
     STACK_DUMP(data);
     for(int counter = 0; counter < NUM_ERRORS; counter++)

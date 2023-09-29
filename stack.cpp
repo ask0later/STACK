@@ -134,6 +134,11 @@ elem_t StackPop(Stack* data, const int line, const char* file)
     {
         Re_Calloc(0, data);
     }
+
+    if (data->size == 0)
+    {
+        return 0;
+    }
     
     (data->size)--;
     int value = *(data->sequence + data->size);

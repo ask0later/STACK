@@ -1,25 +1,11 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x607000000098] called int main()(40) from main.cpp
+Stack[0x604000000018] called elem_t StackPop(Stack*, int, const char*)(31) from main.cpp
 {
-   size = 10;
-   capacity = 16;
-   data[0x607000000098]
+   size = 5;
+   capacity = 8;
+   data[0x604000000018]
    {
-       *data[ 0] = 6
-       *data[ 1] = 51
-       *data[ 2] = 8
-       *data[ 3] = 25
-       *data[ 4] = 23
-       *data[ 5] = 231
-       *data[ 6] = 456
-       *data[ 7] = 564
-       *data[ 8] = 674
-       *data[ 9] = 100
-       *data[10] = 2147483647 (POISON)
-       *data[11] = 2147483647 (POISON)
-       *data[12] = 2147483647 (POISON)
-       *data[13] = 2147483647 (POISON)
-       *data[14] = 2147483647 (POISON)
-       *data[15] = 2147483647 (POISON)
     }
 }
+!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!
+       ERROR_HASH_STRUCT

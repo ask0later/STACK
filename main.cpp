@@ -26,6 +26,7 @@ int main()
     STACK_PUSH(2, &data);
     STACK_PUSH(221, &data);
 
+    data.size = 5;
 
     STACK_POP(&data);
     STACK_POP(&data);

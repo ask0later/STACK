@@ -101,7 +101,7 @@ void StackPush(int value, Stack* data, const int line, const char* file)
         VERIFY(data, err);
     }
 }
-void StackPop(Stack* data, const int line, const char* file)
+elem_t StackPop(Stack* data, const int line, const char* file)
 {
     NullVerify(data);
 
@@ -136,6 +136,7 @@ void StackPop(Stack* data, const int line, const char* file)
     }
     
     (data->size)--;
+    int value = *(data->sequence + data->size);
     *(data->sequence + data->size) = 0;
 
 #ifdef haash
@@ -149,6 +150,7 @@ void StackPop(Stack* data, const int line, const char* file)
     {
         VERIFY(data, err);
     }
+    return value;
 }
 
 void Re_Calloc(int more_or_less, Stack* data)

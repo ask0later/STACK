@@ -11,7 +11,7 @@ void StackCtor(Stack* data, const int line, const char* file);
 void StackDtor(Stack* data);
 
 void StackPush(elem_t value, Stack* data, const int line, const char* file);
-void StackPop(Stack* data, const int line, const char* file);
+elem_t StackPop(Stack* data, const int line, const char* file);
 
 void Re_Calloc(int more_or_less, Stack* data);
 

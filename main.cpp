@@ -13,7 +13,7 @@ int main()
     CleanFile();
 
     struct Stack data;
-
+    
     STACKCTOR(&data);
 
     STACK_PUSH(6, &data);
@@ -27,7 +27,6 @@ int main()
     STACK_PUSH(221, &data);
 
 
-    STACK_POP(&data);
     STACK_POP(&data);
     STACK_POP(&data);
     STACK_PUSH(231, &data);

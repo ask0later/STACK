@@ -1,7 +1,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-Stack[0x607000000098] called int main()(41) from main.cpp
+Stack[0x607000000098] called int main()(40) from main.cpp
 {
-   size = 9;
+   size = 10;
    capacity = 16;
    data[0x607000000098]
    {
@@ -9,12 +9,12 @@ Stack[0x607000000098] called int main()(41) from main.cpp
        *data[ 1] = 51
        *data[ 2] = 8
        *data[ 3] = 25
-       *data[ 4] = 231
-       *data[ 5] = 456
-       *data[ 6] = 564
-       *data[ 7] = 674
-       *data[ 8] = 100
-       *data[9] = 2147483647 (POISON)
+       *data[ 4] = 23
+       *data[ 5] = 231
+       *data[ 6] = 456
+       *data[ 7] = 564
+       *data[ 8] = 674
+       *data[ 9] = 100
        *data[10] = 2147483647 (POISON)
        *data[11] = 2147483647 (POISON)
        *data[12] = 2147483647 (POISON)

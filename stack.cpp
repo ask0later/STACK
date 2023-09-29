@@ -1,7 +1,6 @@
 #include "stack.h"
 
-
-#define STACK_DUMP(data) StackDump(data, __PRETTY_FUNCTION__, line, file)
+#define VERIFY(data, err) Verify(data, err, __PRETTY_FUNCTION__, line, file)
 
 
 void StackCtor(Stack* data, const int line, const char* file)
@@ -10,26 +9,32 @@ void StackCtor(Stack* data, const int line, const char* file)
     data->size = 0;
     VerifyCapacity(data);
 
+
 #ifdef valera
     char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t), sizeof(char));
     
-    data->leftValera = (unsigned long long*) ptr;
-    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t));
-    
-    *(data->leftValera) = INT_MAX;
-    *(data->rightValera) = INT_MAX; 
+    *((unsigned long long*) ptr) = 0xBAADF00D;
+
+    *((unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t))) = 0xBAADF00D;
+
+    data->leftValera = 0xBAADF00D;
+    data->rightValera = 0xBAADF00D; 
     
     data->sequence = (elem_t*) (ptr + sizeof(unsigned long long));
 #else
     data->sequence = (elem_t*) calloc((long unsigned)data->capacity, sizeof(elem_t));
+
 #endif
 
 #ifdef haash
-    data->hash = 0;
-    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
+    data->status_buf = 0;
+    data->status_struct = 0;
+
+    data->hash_struct = 0;
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t*));
+    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
 #endif
 
-    STACK_DUMP(data);
 }
  
 void StackDtor(Stack* data)
@@ -48,16 +53,32 @@ void StackDtor(Stack* data)
 void StackPush(int value, Stack* data, const int line, const char* file)
 {
     NullVerify(data);
-    Verify(data);
+
 #ifdef haash
-    long unsigned int hash_old = data->hash;
-    data->hash = 0;
-    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
-    if (hash_old != data->hash)
+    long unsigned int hash_old_struct = data->hash_struct;
+    data->hash_struct = 0;
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
+    if (hash_old_struct != data->hash_struct)
     {
-        data->status |= ERROR_HASH_MISSMATCH;
+        data->status_struct |= ERROR_HASH_STRUCT;
+    }
+
+    long unsigned int hash_old_buf = data->hash_buf;
+    
+    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+
+    if (hash_old_buf != data->hash_buf)
+    {
+        data->status_buf |= ERROR_HASH_BUFFER;
     }
 #endif
+
+    int err = ErrorRate(data);
+    if (err != 0)
+    {
+        VERIFY(data, err);
+    }
+
 
     if (data->size == data->capacity)
     {
@@ -69,27 +90,45 @@ void StackPush(int value, Stack* data, const int line, const char* file)
     (data->size)++;
 
 #ifdef haash
-    data->hash = 0;
-    data->hash = HashFunction((char*)data->sequence) + HashFunction((char*) &(data->leftValera));
+    data->hash_struct = 0;
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
+    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
 #endif    
 
-    STACK_DUMP(data);
-    Verify(data); 
-    printf("%lu\n", data->hash);
+    err = ErrorRate(data);
+    if (err != 0)
+    {
+        VERIFY(data, err);
+    }
 }
 void StackPop(Stack* data, const int line, const char* file)
 {
     NullVerify(data);
-    Verify(data);
+
 #ifdef haash
-    long unsigned int hash_old = data->hash;
-    data->hash = 0;
-    data->hash = HashFunction(data->sequence) + HashFunction(&(data->leftValera));
-    if (hash_old != data->hash)
+    long unsigned int hash_old_struct = data->hash_struct;
+    data->hash_struct = 0;
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
+    if (hash_old_struct != data->hash_struct)
     {
-        data->status |= ERROR_HASH_MISSMATCH;
+        data->status_struct |= ERROR_HASH_STRUCT;
     }
-#endif
+
+    long unsigned int hash_old_buf = data->hash_buf;
+    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+    if (hash_old_buf != data->hash_buf)
+    {
+        data->status_buf |= ERROR_HASH_BUFFER;
+    }
+#endif    
+
+    int err = ErrorRate(data);
+    if (err != 0)
+    {
+        VERIFY(data, err);
+    }
+
+
 
     if (data->size == data->capacity / 4)
     {
@@ -100,12 +139,16 @@ void StackPop(Stack* data, const int line, const char* file)
     *(data->sequence + data->size) = 0;
 
 #ifdef haash
-    data->hash = 0;
-    data->hash = HashFunction(data->sequence) + HashFunction(&(data->leftValera));
-    //HashFunction(data->sequence, sizeof(data->sequence)) + HashFunction(&(data->leftValera), sizeof(data)
+    data->hash_struct = 0;
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
+    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
 #endif  
-    STACK_DUMP(data);
-    Verify(data);
+
+    err = ErrorRate(data);
+    if (err != 0)
+    {
+        VERIFY(data, err);
+    }
 }
 
 void Re_Calloc(int more_or_less, Stack* data)
@@ -125,12 +168,8 @@ void Re_Calloc(int more_or_less, Stack* data)
     
     data->sequence = (int*) (ptr + sizeof(unsigned long long));
 
-
-    data->leftValera = (unsigned long long*) ptr;
-    data->rightValera = (unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(int));
-    
-    *(data->leftValera) = INT_MAX;
-    *(data->rightValera) = INT_MAX;
+    *(unsigned long long*) ptr = 0xBAADF00D;
+    *(unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(int)) = 0xBAADF00D;
 #else
     data->sequence = (int*) realloc(data->sequence, data->capacity * sizeof(int));
 #endif

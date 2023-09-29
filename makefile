@@ -16,7 +16,7 @@ all: $(TARGET)
 $(TARGET): main.o stack.o verify.o
 	g++ main.o stack.o verify.o $(CFLAGS)
 
-main.o: main.cpp stack.h
+main.o: main.cpp stack.h enumstruct.h
 	$(COMPILE) main.cpp
 
 verify.o: verify.cpp verify.h enumstruct.h

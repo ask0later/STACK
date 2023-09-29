@@ -9,10 +9,12 @@ int ErrorRate(Stack* data)
     if (data->capacity < 0)                     err |= NEGATIVE_CAPACITY;
     if (data->size < 0)                         err |= NEGATIVE_SIZE;
     if ((data->capacity) < (data->size))        err |= ERROR_ARRAY_EXIT; 
+    if (data->capacity > 255)                   err |= ERROR_MEMORY;
 
 #ifdef valera
     if ((data->leftValera) != 0xBAADF00D)       err |= ERROR_LEFT_VALERA;
     if ((data->rightValera) != 0xBAADF00D)      err |= ERROR_RIGHT_VALERA;
+    
 
     char* ptr = (char*) data->sequence;
 
@@ -20,7 +22,7 @@ int ErrorRate(Stack* data)
     if (*((unsigned long long*) (ptr - sizeof(unsigned long long))) != 0xBAADF00D)
                                                 err |= ERROR_LEFT_BUF;
     //if (((unsigned long long) *(data->sequence + data->capacity)) != 0xBAADF00D)
-    if (*((unsigned long long*) (ptr + data->capacity * sizeof(elem_t))) != 0xBAADF00D)
+    if (*((unsigned long long*) (ptr + (long unsigned)data->capacity * sizeof(elem_t))) != 0xBAADF00D)
                                                 err |= ERROR_RIGHT_BUF;                                          
 #endif
 
@@ -116,6 +118,10 @@ void DumpErrors(int error_num)
             fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
                         "      ERROR_EXTRA_MEM\n");
             break;
+        case ERROR_MEMORY:
+            fprintf(fp, "!!!!!!!!!!!!ABORT!!!!!!!!!!!!!!!\n"
+                        "      ERROR_MEMORY\n");
+            break;
 
 #ifdef valera
         case ERROR_LEFT_VALERA:
@@ -191,3 +197,4 @@ void NullVerify(Stack* data)
         exit(1);
     }
 }
+

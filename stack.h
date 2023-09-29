@@ -5,9 +5,9 @@
 #include "enumstruct.h"
 
 
-const int MIN_CAPACITY = 2;
+const int MIN_CAPACITY = 3;
 
-void StackCtor(Stack* data, const int line, const char* file);
+void StackCtor(Stack* data);
 void StackDtor(Stack* data);
 
 void StackPush(elem_t value, Stack* data, const int line, const char* file);

@@ -3,8 +3,6 @@
 #define STACK_PUSH(value, data) StackPush(value, data, __LINE__, __FILE__)
 #define STACK_POP(data) StackPop(data, __LINE__, __FILE__)
 
-#define STACKCTOR(data) StackCtor(data, __LINE__, __FILE__)
-#define STACKDTOR(data) StackDtor(data)
 
 
 
@@ -14,7 +12,9 @@ int main()
 
     struct Stack data;
     
-    STACKCTOR(&data);
+    StackCtor(&data);
+
+    //for (int i = 0; i < 1000; i++) STACK_PUSH(6, &data);
 
     STACK_PUSH(6, &data);
     STACK_PUSH(51, &data);
@@ -26,13 +26,13 @@ int main()
     STACK_PUSH(2, &data);
     STACK_PUSH(221, &data);
 
+    //data.capacity = 10000;
 
     STACK_POP(&data);
     STACK_POP(&data);
 
     STACK_PUSH(231, &data);
 
-    data.capacity = 20;
 
     STACK_PUSH(456, &data);
     STACK_PUSH(564, &data);
@@ -41,7 +41,7 @@ int main()
 
 
     StackDump(&data, __PRETTY_FUNCTION__, __LINE__, __FILE__);
-    STACKDTOR(&data);
+    StackDtor(&data);
 
     return 0;
 }

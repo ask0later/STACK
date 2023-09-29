@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "enumstruct.h"
 
-const int NUM_ERRORS = 15;
+const int NUM_ERRORS = 14;
 
 int StackVerify(Stack* data);
 

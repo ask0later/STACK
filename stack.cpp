@@ -3,8 +3,11 @@
 #define VERIFY(data, err) Verify(data, err, __PRETTY_FUNCTION__, line, file)
 
 
-void StackCtor(Stack* data, const int line, const char* file)
+void StackCtor(Stack* data)
 {
+    NullVerify(data);
+    
+
     data->capacity = MIN_CAPACITY;
     data->size = 0;
     VerifyCapacity(data);
@@ -33,6 +36,7 @@ void StackCtor(Stack* data, const int line, const char* file)
     data->hash_struct = 0;
     data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + (long unsigned) data->capacity * sizeof(elem_t*));
     data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+    data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
 #endif
 
 }
@@ -57,7 +61,10 @@ void StackPush(int value, Stack* data, const int line, const char* file)
 #ifdef haash
     long unsigned int hash_old_struct = data->hash_struct;
     data->hash_struct = 0;
+    //printf("%lu\n", hash_old_struct);
     data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
+    //printf("%lu\n", data->hash_struct);
+   
     if (hash_old_struct != data->hash_struct)
     {
         data->status_struct |= ERROR_HASH_STRUCT;
@@ -66,7 +73,7 @@ void StackPush(int value, Stack* data, const int line, const char* file)
     if (data->status_struct == 0)
     {
         long unsigned int hash_old_buf = data->hash_buf;
-        data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+        data->hash_buf = HashFunction((char*)data->sequence, (long unsigned) data->capacity * sizeof(elem_t));
         if (hash_old_buf != data->hash_buf)
         {
             data->status_buf |= ERROR_HASH_BUFFER;
@@ -74,7 +81,8 @@ void StackPush(int value, Stack* data, const int line, const char* file)
     }
 #endif
 
-    
+    //printf("%d\n", data->status_struct);
+    //printf("%d\n", data->status_buf);
     VERIFY(data, data->status_struct);
     VERIFY(data, data->status_buf);
 
@@ -97,7 +105,7 @@ void StackPush(int value, Stack* data, const int line, const char* file)
 #ifdef haash
     data->hash_struct = 0;
     data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
-    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+    data->hash_buf = HashFunction((char*)data->sequence, (long unsigned) data->capacity * sizeof(elem_t));
 #endif    
 
     err = ErrorRate(data);
@@ -122,7 +130,7 @@ elem_t StackPop(Stack* data, const int line, const char* file)
     if (data->status_struct == 0)
     {
         long unsigned int hash_old_buf = data->hash_buf;
-        data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+        data->hash_buf = HashFunction((char*)data->sequence, (long unsigned)data->capacity * sizeof(elem_t));
         if (hash_old_buf != data->hash_buf)
         {
             data->status_buf |= ERROR_HASH_BUFFER;
@@ -158,7 +166,7 @@ elem_t StackPop(Stack* data, const int line, const char* file)
 #ifdef haash
     data->hash_struct = 0;
     data->hash_struct = HashFunction(&data->leftValera, 2 * sizeof(unsigned long long) + 2 * sizeof(int) + sizeof(elem_t*));
-    data->hash_buf = HashFunction((char*)data->sequence, data->capacity * sizeof(elem_t));
+    data->hash_buf = HashFunction((char*)data->sequence, (long unsigned)data->capacity * sizeof(elem_t));
 #endif  
 
     err = ErrorRate(data);

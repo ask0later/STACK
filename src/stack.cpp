@@ -8,16 +8,16 @@ void StackCtor(Stack* stk)
     VerifyCapacity(stk);
 
 #ifdef VALERA_VERIFICATION
-    char* ptr = (char*) calloc(2 * sizeof(unsigned long long) + (long unsigned) stk->capacity * sizeof(elem_t), sizeof(char));
+    char* ptr = (char*) calloc(2 * sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t), sizeof(char));
     
-    *((unsigned long long*) ptr) = 0xBAADF00D;
+    *((valera_t*) ptr) = 0xBAADF00D;
 
-    *((unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) stk->capacity * sizeof(elem_t))) = 0xBAADF00D;
+    *((valera_t*) (ptr + sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t))) = 0xBAADF00D;
 
     stk->leftValera = 0xBAADF00D;
     stk->rightValera = 0xBAADF00D; 
     
-    stk->sequence = (elem_t*) (ptr + sizeof(unsigned long long));
+    stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
 #else
     stk->sequence = (elem_t*) calloc((long unsigned)stk->capacity, sizeof(elem_t));
 #endif
@@ -34,7 +34,7 @@ void StackDtor(Stack* stk)
     stk->capacity = INT_MAX;
 
 #ifdef VALERA_VERIFICATION
-    elem_t* ptr = stk->sequence - sizeof(unsigned long long) / sizeof(elem_t);
+    elem_t* ptr = stk->sequence - sizeof(valera_t) / sizeof(elem_t);
     free(ptr);
 #else
     free(stk->sequence);
@@ -65,7 +65,6 @@ void StackPush(int value, Stack* stk, const int line, const char* file)
 elem_t StackPop(Stack* stk, const int line, const char* file)
 {
     int errors = ErrorRate(stk);
-    //printf("%d\n", errors);
     if (errors == 0)
     {
         if (stk->size == stk->capacity / 4)
@@ -89,7 +88,7 @@ elem_t StackPop(Stack* stk, const int line, const char* file)
         return value;
     }
     VERIFY(stk, errors);
-    return NULL;
+    return 0;
 }
 
 void Re_Calloc(bool more_or_less, Stack* stk)
@@ -104,13 +103,13 @@ void Re_Calloc(bool more_or_less, Stack* stk)
     }
 
 #ifdef VALERA_VERIFICATION
-    char* ptr = (char*) (stk->sequence - sizeof(unsigned long long) / sizeof(int));
-    ptr = (char*) realloc(ptr, (2 * sizeof(unsigned long long) + (long unsigned) stk->capacity * sizeof(elem_t)) * sizeof(char));
+    char* ptr = (char*) (stk->sequence - sizeof(valera_t) / sizeof(int));
+    ptr = (char*) realloc(ptr, (2 * sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t)) * sizeof(char));
     
-    stk->sequence = (elem_t*) (ptr + sizeof(unsigned long long));
+    stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
 
-    *(unsigned long long*) ptr = 0xBAADF00D;
-    *(unsigned long long*) (ptr + sizeof(unsigned long long) + (long unsigned) stk->capacity * sizeof(int)) = 0xBAADF00D;
+    *(valera_t*) ptr = 0xBAADF00D;
+    *(valera_t*) (ptr + sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(int)) = 0xBAADF00D;
 #else
     stk->sequence = (elem_t*) realloc(stk->sequence, stk->capacity * sizeof(int));
 #endif
@@ -129,5 +128,5 @@ void StackRehash(Stack* stk)
     stk->hash_struct = 0;
     stk->hash_buf = 0;
     stk->hash_struct = HashFunction(stk, sizeof(*stk));
-    stk->hash_buf = HashFunction(stk->sequence, sizeof(elem_t) * stk->capacity);
+    stk->hash_buf = HashFunction(stk->sequence, (long unsigned int) stk->capacity * sizeof(elem_t));
 }

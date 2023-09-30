@@ -9,6 +9,7 @@
 #define STACK_POP(stk) StackPop(stk, __LINE__, __FILE__)
 
 typedef int elem_t;
+typedef unsigned long long int valera_t;
 
 #ifndef STRUCT
 
@@ -16,7 +17,7 @@ typedef int elem_t;
 struct Stack
 {
 #ifdef VALERA_VERIFICATION
-    unsigned long long int leftValera;
+    valera_t leftValera;
 #endif
     elem_t* sequence;
     int size;
@@ -28,7 +29,7 @@ struct Stack
 #endif
 
 #ifdef VALERA_VERIFICATION
-    unsigned long long int rightValera;
+    valera_t rightValera;
 #endif 
 }; 
 #endif

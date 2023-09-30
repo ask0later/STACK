@@ -26,7 +26,7 @@ int ErrorRate(Stack* stk)
         {                                           err |= ERROR_HASH_STRUCT;}
         else
         {
-            if (stk->hash_buf != HashFunction(stk->sequence, sizeof(elem_t) * stk->capacity))
+            if (stk->hash_buf != HashFunction(stk->sequence, (long unsigned int) stk->capacity * sizeof(elem_t)))
             {                                       err |= ERROR_HASH_BUFFER;}
         }
     #endif
@@ -35,13 +35,13 @@ int ErrorRate(Stack* stk)
         if ((stk->leftValera) != 0xBAADF00D)        err |= ERROR_LEFT_VALERA; 
         if ((stk->rightValera) != 0xBAADF00D)       err |= ERROR_RIGHT_VALERA;
         
-        if (*((unsigned long long*) ((char*) stk->sequence - sizeof(unsigned long long))) != 0xBAADF00D)
+        if (*((valera_t*) ((char*) stk->sequence - sizeof(valera_t))) != 0xBAADF00D)
                                                     err |= ERROR_LEFT_BUF;
         
     #ifdef HASH_VERIFICATION    
         if (!(err & ERROR_HASH_STRUCT))
         {
-            if (*((unsigned long long*) ((char*) stk->sequence + (long unsigned)stk->capacity * sizeof(elem_t))) != 0xBAADF00D)
+            if (*((valera_t*) ((char*) stk->sequence + (long unsigned)stk->capacity * sizeof(elem_t))) != 0xBAADF00D)
                                                     err |= ERROR_RIGHT_BUF;     
         }
     #endif                                     
@@ -160,6 +160,7 @@ void DumpErrors(int error_num)
         case ERROR_RIGHT_BUF:
             fprintf(fp, "ABORT\n"
                         "ERROR_RIGHT_BUF\n\n");
+            break;
 #endif
 
 #ifdef HASH_VERIFICATION
@@ -202,7 +203,7 @@ long unsigned int HashFunction(void* ptr, size_t size)
 }
 void VerifyCapacity(Stack* stk)
 {
-    while ((unsigned long) stk->capacity % (sizeof(unsigned long long) / sizeof(elem_t)) != 0)
+    while ((unsigned long) stk->capacity % (sizeof(valera_t) / sizeof(elem_t)) != 0)
     { 
         stk->capacity++;
     }

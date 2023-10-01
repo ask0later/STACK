@@ -83,8 +83,7 @@ void StackDump(Stack* stk, int errors, const char* func, const int line, const c
                 "   {\n", stk->sequence, func, line, file, stk->size, stk->capacity, stk->sequence);
 #ifdef HASH_VERIFICATION
     if (!(errors & ERROR_HASH_STRUCT))
-    {
-        
+    { 
         for (int counter = 0; counter < stk->size; counter++)
         {
             fprintf(fp,"       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
@@ -102,6 +101,23 @@ void StackDump(Stack* stk, int errors, const char* func, const int line, const c
             }
         }
     }
+#else
+    for (int counter = 0; counter < stk->size; counter++)
+        {
+            fprintf(fp,"       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
+        }
+        
+        for (int counter = stk->size; counter < stk->capacity; counter++)
+        {
+            if (*(stk->sequence + counter) == 0)
+            {
+                fprintf(fp, "       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
+            }
+            else
+            {
+                fprintf(fp, "       *stk[%d] = %d (POISON)\n", counter, *(stk->sequence + counter));
+            }
+        }
 #endif
     
     fprintf(fp,"   }\n"

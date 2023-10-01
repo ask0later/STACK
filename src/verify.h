@@ -13,3 +13,5 @@ int StackVerify(Stack* stk);
 
 void DumpErrors(int error_num);
 void StackDump(Stack* stk, int errors, const char* func, const int line, const char* file);
+
+void PrintSequence(Stack* stk, FILE* fp);

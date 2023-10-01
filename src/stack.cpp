@@ -1,6 +1,6 @@
 #include "stack.h"
 
-void StackCtor(Stack* stk, const int line, const char* file)
+void StackCtor(Stack* stk)
 {
     stk->capacity = MIN_CAPACITY;
     stk->size = 0;

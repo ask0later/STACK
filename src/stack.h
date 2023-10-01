@@ -5,8 +5,6 @@
 
 #define VERIFY(stk, err) Verify(stk, err, __PRETTY_FUNCTION__, line, file)
 
-#define STACKCTOR(stk) StackCtor(stk, __LINE__, __FILE__)
-
 #define STACK_PUSH(value, stk) StackPush(value, stk, __LINE__, __FILE__)
 #define STACK_POP(stk) StackPop(stk, __LINE__, __FILE__)
 
@@ -59,7 +57,7 @@ enum Error
 
 const int MIN_CAPACITY = 3;
 
-void StackCtor(Stack* stk, const int line, const char* file);
+void StackCtor(Stack* stk);
 void StackDtor(Stack* stk);
 
 void StackPush(elem_t value, Stack* stk, const int line, const char* file);

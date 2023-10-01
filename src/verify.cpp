@@ -84,40 +84,10 @@ void StackDump(Stack* stk, int errors, const char* func, const int line, const c
 #ifdef HASH_VERIFICATION
     if (!(errors & ERROR_HASH_STRUCT))
     { 
-        for (int counter = 0; counter < stk->size; counter++)
-        {
-            fprintf(fp,"       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
-        }
-        
-        for (int counter = stk->size; counter < stk->capacity; counter++)
-        {
-            if (*(stk->sequence + counter) == 0)
-            {
-                fprintf(fp, "       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
-            }
-            else
-            {
-                fprintf(fp, "       *stk[%d] = %d (POISON)\n", counter, *(stk->sequence + counter));
-            }
-        }
+        PrintSequence(stk, fp);
     }
 #else
-    for (int counter = 0; counter < stk->size; counter++)
-        {
-            fprintf(fp,"       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
-        }
-        
-        for (int counter = stk->size; counter < stk->capacity; counter++)
-        {
-            if (*(stk->sequence + counter) == 0)
-            {
-                fprintf(fp, "       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
-            }
-            else
-            {
-                fprintf(fp, "       *stk[%d] = %d (POISON)\n", counter, *(stk->sequence + counter));
-            }
-        }
+    PrintSequence(stk, fp);
 #endif
     
     fprintf(fp,"   }\n"
@@ -224,4 +194,24 @@ void VerifyCapacity(Stack* stk)
     { 
         stk->capacity++;
     }
+}
+
+void PrintSequence(Stack* stk, FILE* fp)
+{
+    for (int counter = 0; counter < stk->size; counter++)
+        {
+            fprintf(fp,"       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
+        }
+        
+    for (int counter = stk->size; counter < stk->capacity; counter++)
+    {
+        if (*(stk->sequence + counter) == 0)
+        {
+            fprintf(fp, "       *stk[%2d] = %d\n", counter, *(stk->sequence + counter)); 
+        }
+        else
+        {
+            fprintf(fp, "       *stk[%d] = %d (POISON)\n", counter, *(stk->sequence + counter));
+        }
+    }    
 }

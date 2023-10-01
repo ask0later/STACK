@@ -1,7 +1,24 @@
 #include "stack.h"
 
-void StackCtor(Stack* stk)
+
+void CreateStack(Stack** stk, const int line, const char* file)
 {
+    int errors = 0;
+    *stk = (Stack*) calloc(1, sizeof(Stack));
+    if (*stk == nullptr)
+        errors |= ERROR_ALLOC;
+    else
+        errors = StackCtor(*stk);
+    VERIFY(*stk, errors);
+}
+void DeleteStack(Stack** stk)
+{
+    StackDtor(*stk);
+    free(*stk);
+}
+int StackCtor(Stack* stk)
+{
+    int errors = 0;
     stk->capacity = MIN_CAPACITY;
     stk->size = 0;
 
@@ -9,26 +26,33 @@ void StackCtor(Stack* stk)
 
 #ifdef VALERA_VERIFICATION
     char* ptr = (char*) calloc(2 * sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t), sizeof(char));
-
-    stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
+    if (ptr == nullptr)
+    {
+        stk->sequence = nullptr;
+        errors |= ERROR_ALLOC;
+    }
+    else
+    {
+        stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
     
 
-    *((valera_t*) ptr) = 0xBAADF00D;
+        *((valera_t*) ptr) = 0xBAADF00D;
 
-    *((valera_t*) (ptr + sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t))) = 0xBAADF00D;
+        *((valera_t*) (ptr + sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t))) = 0xBAADF00D;
 
-    stk->leftValera = 0xBAADF00D;
-    stk->rightValera = 0xBAADF00D; 
-    
-    
-#else
-    stk->sequence = (elem_t*) calloc((long unsigned)stk->capacity, sizeof(elem_t));
-#endif
+        stk->leftValera = 0xBAADF00D;
+        stk->rightValera = 0xBAADF00D; 
 
 #ifdef HASH_VERIFICATION
-    StackRehash(stk);
+        StackRehash(stk);
+        errors = ErrorRate(stk);
+    }
 #endif
 
+#else
+        stk->sequence = (elem_t*) calloc((long unsigned)stk->capacity, sizeof(elem_t));
+#endif
+    return errors;
 }
  
 void StackDtor(Stack* stk)
@@ -37,8 +61,11 @@ void StackDtor(Stack* stk)
     stk->capacity = INT_MAX;
 
 #ifdef VALERA_VERIFICATION
-    elem_t* ptr = stk->sequence - sizeof(valera_t) / sizeof(elem_t);
-    free(ptr);
+    if (stk->sequence != nullptr)
+    {
+        elem_t* ptr = stk->sequence - sizeof(valera_t) / sizeof(elem_t);
+        free(ptr);
+    }
 #else
     free(stk->sequence);
 #endif
@@ -126,10 +153,13 @@ void Re_Calloc(bool more_or_less, Stack* stk)
     }
 }
 
+
 void StackRehash(Stack* stk)
 {
+#ifdef HASH_VERIFICATION
     stk->hash_struct = 0;
     stk->hash_buf = 0;
     stk->hash_struct = HashFunction(stk, sizeof(*stk));
     stk->hash_buf = HashFunction(stk->sequence, (long unsigned int) stk->capacity * sizeof(elem_t));
+#endif
 }

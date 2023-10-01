@@ -12,7 +12,7 @@ int ErrorRate(Stack* stk)
         if ((stk->capacity) < (stk->size))          err |= ERROR_ARRAY_EXIT; 
         if (stk->capacity > 255)                    err |= ERROR_MEMORY;
 
-    #ifdef HASH_VERIFICATION
+        #ifdef HASH_VERIFICATION
 
         long unsigned int old_hash_struct = stk->hash_struct, old_hash_buf = stk->hash_buf;
         stk->hash_struct = 0; stk->hash_buf = 0; 
@@ -29,23 +29,28 @@ int ErrorRate(Stack* stk)
             if (stk->hash_buf != HashFunction(stk->sequence, (long unsigned int) stk->capacity * sizeof(elem_t)))
             {                                       err |= ERROR_HASH_BUFFER;}
         }
-    #endif
+        #endif
 
-    #ifdef VALERA_VERIFICATION
-        if ((stk->leftValera) != 0xBAADF00D)        err |= ERROR_LEFT_VALERA; 
-        if ((stk->rightValera) != 0xBAADF00D)       err |= ERROR_RIGHT_VALERA;
+#ifdef VALERA_VERIFICATION
+        if (stk->sequence == nullptr)               err |= ERROR_ALLOC;
+        else
+        {
+            if ((stk->leftValera) != 0xBAADF00D)    err |= ERROR_LEFT_VALERA; 
+            if ((stk->rightValera) != 0xBAADF00D)   err |= ERROR_RIGHT_VALERA;
         
-        if (*((valera_t*) ((char*) stk->sequence - sizeof(valera_t))) != 0xBAADF00D)
+            if (*((valera_t*) ((char*) stk->sequence - sizeof(valera_t))) != 0xBAADF00D)
                                                     err |= ERROR_LEFT_BUF;
         
-    #ifdef HASH_VERIFICATION    
-        if (!(err & ERROR_HASH_STRUCT))
-        {
-            if (*((valera_t*) ((char*) stk->sequence + (long unsigned)stk->capacity * sizeof(elem_t))) != 0xBAADF00D)
+#ifdef HASH_VERIFICATION    
+            if (!(err & ERROR_HASH_STRUCT))
+            {
+                if (*((valera_t*) ((char*) stk->sequence + (long unsigned)stk->capacity * sizeof(elem_t))) != 0xBAADF00D)
                                                     err |= ERROR_RIGHT_BUF;     
+            }
         }
-    #endif                                     
-    #endif
+
+#endif                                     
+#endif
     }  
     
     return err;
@@ -56,7 +61,7 @@ void Verify(Stack* stk, int errors, const char* func, const int line, const char
     if (errors == 0)
         return;
     int error_bit = 1;
-    if (!(ERROR_NULL_STK & errors))
+    if (!((ERROR_NULL_STK & errors) || (ERROR_ALLOC & errors)))
     {
         STACK_DUMP(stk);
     }
@@ -126,6 +131,10 @@ void DumpErrors(int error_num)
         case ERROR_MEMORY:
             fprintf(fp, "ABORT\n"
                         "ERROR_MEMORY\n\n");
+            break;
+        case ERROR_ALLOC:
+            fprintf(fp, "ABORT\n"
+                        "ERROR)ALLOC\n\n");
             break;
 
 #ifdef VALERA_VERIFICATION

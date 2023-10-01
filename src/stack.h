@@ -4,7 +4,7 @@
 #include <assert.h>
 
 #define VERIFY(stk, err) Verify(stk, err, __PRETTY_FUNCTION__, line, file)
-
+#define CREATESTACK(stk) CreateStack(stk, __LINE__, __FILE__)
 #define STACK_PUSH(value, stk) StackPush(value, stk, __LINE__, __FILE__)
 #define STACK_POP(stk) StackPop(stk, __LINE__, __FILE__)
 
@@ -43,21 +43,24 @@ enum Error
     ERROR_ARRAY_EXIT = 8,
     ERROR_EXTRA_MEM = 16,
     ERROR_MEMORY = 32,
+    ERROR_ALLOC = 64,
 #ifdef VALERA_VERIFICATION
-    ERROR_LEFT_VALERA = 64,
-    ERROR_RIGHT_VALERA = 128,
-    ERROR_LEFT_BUF = 256,
-    ERROR_RIGHT_BUF = 512,
+    ERROR_LEFT_VALERA = 128,
+    ERROR_RIGHT_VALERA = 256,
+    ERROR_LEFT_BUF = 512,
+    ERROR_RIGHT_BUF = 1024,
 #endif
 #ifdef HASH_VERIFICATION
-    ERROR_HASH_STRUCT = 1024,  
-    ERROR_HASH_BUFFER = 2048   
+    ERROR_HASH_STRUCT = 2048,  
+    ERROR_HASH_BUFFER = 4096   
 #endif
 };
 
 const int MIN_CAPACITY = 3;
 
-void StackCtor(Stack* stk);
+void CreateStack(Stack** stk, const int line, const char* file);
+void DeleteStack(Stack** stk);
+int StackCtor(Stack* stk);
 void StackDtor(Stack* stk);
 
 void StackPush(elem_t value, Stack* stk, const int line, const char* file);

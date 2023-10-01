@@ -108,7 +108,7 @@ void DumpErrors(int error_num)
     {
         case ERROR_NULL_STK:
             fprintf(fp, "ABORT:\n"
-                        "ERROR_NULL_stk\n\n");
+                        "ERROR_NULL_stk or ERROR_ALLOC\n\n");
             break;
         case NEGATIVE_CAPACITY:
             fprintf(fp, "ABORT\n"

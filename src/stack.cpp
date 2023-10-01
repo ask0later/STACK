@@ -4,7 +4,8 @@
 void CreateStack(Stack** stk, const int line, const char* file)
 {
     int errors = 0;
-    *stk = (Stack*) calloc(1, sizeof(Stack));
+    //*stk = (Stack*) calloc(1, sizeof(Stack));
+    *stk = nullptr;
     if (*stk == nullptr)
         errors |= ERROR_ALLOC;
     else
@@ -13,8 +14,11 @@ void CreateStack(Stack** stk, const int line, const char* file)
 }
 void DeleteStack(Stack** stk)
 {
-    StackDtor(*stk);
-    free(*stk);
+    if (*stk != nullptr)
+    {
+        StackDtor(*stk);
+        free(*stk);
+    }
 }
 int StackCtor(Stack* stk)
 {

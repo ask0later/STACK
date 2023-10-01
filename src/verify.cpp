@@ -81,7 +81,7 @@ void StackDump(Stack* stk, int errors, const char* func, const int line, const c
                 "   capacity = %d;\n"
                 "   stk[%p]\n"
                 "   {\n", stk->sequence, func, line, file, stk->size, stk->capacity, stk->sequence);
-
+#ifdef HASH_VERIFICATION
     if (!(errors & ERROR_HASH_STRUCT))
     {
         
@@ -102,6 +102,7 @@ void StackDump(Stack* stk, int errors, const char* func, const int line, const c
             }
         }
     }
+#endif
     
     fprintf(fp,"   }\n"
                "}\n");

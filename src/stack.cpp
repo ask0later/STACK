@@ -1,6 +1,6 @@
 #include "stack.h"
 
-void StackCtor(Stack* stk)
+void StackCtor(Stack* stk, const int line, const char* file)
 {
     stk->capacity = MIN_CAPACITY;
     stk->size = 0;
@@ -9,7 +9,10 @@ void StackCtor(Stack* stk)
 
 #ifdef VALERA_VERIFICATION
     char* ptr = (char*) calloc(2 * sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t), sizeof(char));
+
+    stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
     
+
     *((valera_t*) ptr) = 0xBAADF00D;
 
     *((valera_t*) (ptr + sizeof(valera_t) + (long unsigned) stk->capacity * sizeof(elem_t))) = 0xBAADF00D;
@@ -17,7 +20,7 @@ void StackCtor(Stack* stk)
     stk->leftValera = 0xBAADF00D;
     stk->rightValera = 0xBAADF00D; 
     
-    stk->sequence = (elem_t*) (ptr + sizeof(valera_t));
+    
 #else
     stk->sequence = (elem_t*) calloc((long unsigned)stk->capacity, sizeof(elem_t));
 #endif

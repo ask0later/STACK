@@ -4,35 +4,17 @@
 #include <assert.h>
 
 #define VERIFY(stk, err) Verify(stk, err, __PRETTY_FUNCTION__, line, file)
-#define CREATESTACK(stk) CreateStack(stk, __LINE__, __FILE__)
+#define CREATE_STACK(stk) CreateStack(stk, __LINE__, __FILE__)
 #define STACK_PUSH(value, stk) StackPush(value, stk, __LINE__, __FILE__)
 #define STACK_POP(stk) StackPop(stk, __LINE__, __FILE__)
+#define STACK_DUMP(stk) StackDump(stk, errors, func, line, file)
+
+const int NUM_ERRORS = 14;
 
 typedef int elem_t;
 typedef unsigned long long int valera_t;
 
-#ifndef STRUCT
-
-#define STRUCT
-struct Stack
-{
-#ifdef VALERA_VERIFICATION
-    valera_t leftValera;
-#endif
-    elem_t* sequence;
-    int size;
-    int capacity;
-
-#ifdef HASH_VERIFICATION
-    long unsigned int hash_buf;
-    long unsigned int hash_struct;
-#endif
-
-#ifdef VALERA_VERIFICATION
-    valera_t rightValera;
-#endif 
-}; 
-#endif
+struct Stack;
 
 enum Error
 {
@@ -74,5 +56,10 @@ void StackRehash(Stack* stk);
 
 void Verify(Stack* stk, int errors, const char* func, const int line, const char* file);
 int ErrorRate(Stack* stk);
+
+void DumpErrors(int error_num);
+void StackDump(Stack* stk, int errors, const char* func, const int line, const char* file);
+
+void PrintSequence(Stack* stk, FILE* fp);
 
 void CleanFile();

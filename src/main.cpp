@@ -4,8 +4,8 @@ int main()
 {
     CleanFile();
     struct Stack *stk;
-    CREATESTACK(&stk);
-
+    CREATE_STACK(&stk);
+    //stk.capacity = 20;
     STACK_PUSH(30, stk);
     STACK_PUSH(50, stk);
     STACK_PUSH(60, stk);
